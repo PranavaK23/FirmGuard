@@ -1,0 +1,64 @@
+C:\Users\SIDDARTH\Documents\ChatGPT\isss\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_squashfs_extraction (test_binwalk_live.LiveBinwalkTest.test_squashfs_extraction) ... skipped 'requires optional local Docker Binwalk image and explicit opt-in'
+test_comparison_findings_and_secret_rotation (test_firmguard.APITests.test_comparison_findings_and_secret_rotation) ... ok
+test_different_scope_device_rules_and_same_id_rejected (test_firmguard.APITests.test_different_scope_device_rules_and_same_id_rejected) ... ok
+test_empty_oversize_and_unsafe_upload_name (test_firmguard.APITests.test_empty_oversize_and_unsafe_upload_name) ... ok
+test_failed_extraction_is_visible_and_cannot_export (test_firmguard.APITests.test_failed_extraction_is_visible_and_cannot_export) ... ok
+test_full_firmware_comparison_and_pdf (test_firmguard.APITests.test_full_firmware_comparison_and_pdf) ... ok
+test_health_version (test_firmguard.APITests.test_health_version) ... ok
+test_interrupted_records_and_active_deletion (test_firmguard.APITests.test_interrupted_records_and_active_deletion) ... ok
+test_job_capacity_rejects_cleanly (test_firmguard.APITests.test_job_capacity_rejects_cleanly) ... ok
+test_local_origin_and_host_restrictions (test_firmguard.APITests.test_local_origin_and_host_restrictions) ... ok
+test_missing_records (test_firmguard.APITests.test_missing_records) ... ok
+test_pagination_and_exact_device_filter (test_firmguard.APITests.test_pagination_and_exact_device_filter) ... ok
+test_request_body_limit_without_content_length (test_firmguard.APITests.test_request_body_limit_without_content_length) ... ok
+test_revision_is_immutable_and_not_reused_after_delete (test_firmguard.APITests.test_revision_is_immutable_and_not_reused_after_delete) ... ok
+test_saved_record_privacy_and_exports (test_firmguard.APITests.test_saved_record_privacy_and_exports) ... ok
+test_status_remains_readable_while_worker_runs (test_firmguard.APITests.test_status_remains_readable_while_worker_runs) ... ok
+test_validation_does_not_echo_input (test_firmguard.APITests.test_validation_does_not_echo_input) ... ok
+test_worker_failure_is_sanitized (test_firmguard.APITests.test_worker_failure_is_sanitized) ... ok
+test_container_command_and_output_revalidation (test_firmguard.BinwalkTests.test_container_command_and_output_revalidation) ... ok
+test_timeout_kills_client_and_removes_container (test_firmguard.BinwalkTests.test_timeout_kills_client_and_removes_container) ... ok
+test_unavailable_does_not_silently_claim_extraction (test_firmguard.BinwalkTests.test_unavailable_does_not_silently_claim_extraction) ... ok
+test_canary_and_fortify_symbol_evidence (test_firmguard.ELFTests.test_canary_and_fortify_symbol_evidence) ... ok
+test_hardened_32_64_little_big (test_firmguard.ELFTests.test_hardened_32_64_little_big) ... ok
+test_malformed_elf_explicitly_partial (test_firmguard.ELFTests.test_malformed_elf_explicitly_partial) ... ok
+test_missing_stack_header_unknown (test_firmguard.ELFTests.test_missing_stack_header_unknown) ... ok
+test_shared_library_not_reported_as_no_pie (test_firmguard.ELFTests.test_shared_library_not_reported_as_no_pie) ... ok
+test_unhardened_executable (test_firmguard.ELFTests.test_unhardened_executable) ... ok
+test_all_native_compression_formats (test_firmguard.ExtractionTests.test_all_native_compression_formats) ... ok
+test_duplicates_case_collisions_and_decompression_collisions (test_firmguard.ExtractionTests.test_duplicates_case_collisions_and_decompression_collisions) ... ok
+test_empty_and_damaged_archive (test_firmguard.ExtractionTests.test_empty_and_damaged_archive) ... ok
+test_encrypted_zip (test_firmguard.ExtractionTests.test_encrypted_zip) ... ok
+test_entry_and_nesting_limits (test_firmguard.ExtractionTests.test_entry_and_nesting_limits) ... ok
+test_expansion_budget (test_firmguard.ExtractionTests.test_expansion_budget) ... ok
+test_large_file_text_coverage_is_explicit (test_firmguard.ExtractionTests.test_large_file_text_coverage_is_explicit) ... ok
+test_links_and_special_tar_files (test_firmguard.ExtractionTests.test_links_and_special_tar_files) ... ok
+test_nested_zip_paths (test_firmguard.ExtractionTests.test_nested_zip_paths) ... ok
+test_raw_binary_partial_coverage (test_firmguard.ExtractionTests.test_raw_binary_partial_coverage) ... ok
+test_real_archives_not_just_extensions (test_firmguard.ExtractionTests.test_real_archives_not_just_extensions) ... ok
+test_single_file_budget (test_firmguard.ExtractionTests.test_single_file_budget) ... ok
+test_stream_decompression_budget (test_firmguard.ExtractionTests.test_stream_decompression_budget) ... ok
+test_tar_conventional_dot_prefix (test_firmguard.ExtractionTests.test_tar_conventional_dot_prefix) ... ok
+test_traversal_and_windows_paths (test_firmguard.ExtractionTests.test_traversal_and_windows_paths) ... ok
+test_zip_symlink (test_firmguard.ExtractionTests.test_zip_symlink) ... ok
+test_account_fields_are_not_exposed (test_firmguard.RuleTests.test_account_fields_are_not_exposed) ... ok
+test_advisory_boundaries_and_vendor_suffix (test_firmguard.RuleTests.test_advisory_boundaries_and_vendor_suffix) ... ok
+test_comment_quotes_and_placeholders (test_firmguard.RuleTests.test_comment_quotes_and_placeholders) ... ok
+test_conditional_ssh_is_marked (test_firmguard.RuleTests.test_conditional_ssh_is_marked) ... ok
+test_configuration_miscellaneous_and_permissions (test_firmguard.RuleTests.test_configuration_miscellaneous_and_permissions) ... ok
+test_configuration_rules_and_scope (test_firmguard.RuleTests.test_configuration_rules_and_scope) ... ok
+test_finding_limit_fails_instead_of_silent_truncation (test_firmguard.RuleTests.test_finding_limit_fails_instead_of_silent_truncation) ... ok
+test_inventory_package_metadata_and_eight_families (test_firmguard.RuleTests.test_inventory_package_metadata_and_eight_families) ... ok
+test_private_key (test_firmguard.RuleTests.test_private_key) ... ok
+test_sample_credentials (test_firmguard.RuleTests.test_sample_credentials) ... ok
+test_sha256_exact_bytes_and_reference (test_firmguard.RuleTests.test_sha256_exact_bytes_and_reference) ... ok
+test_database_migration_preserves_existing_record (test_firmguard.WorkerAndHistoryTests.test_database_migration_preserves_existing_record) ... ok
+test_revision_allocation_is_transactional (test_firmguard.WorkerAndHistoryTests.test_revision_allocation_is_transactional) ... ok
+test_worker_timeout_kills_process (test_firmguard.WorkerAndHistoryTests.test_worker_timeout_kills_process) ... ok
+
+----------------------------------------------------------------------
+Ran 57 tests in 24.649s
+
+OK (skipped=1)

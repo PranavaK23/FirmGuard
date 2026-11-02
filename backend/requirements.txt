@@ -1,0 +1,8 @@
+fastapi==0.143.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+pyelftools==0.32
+reportlab==4.4.9
+# Used by backend/API and PDF verification tests.
+httpx==0.28.1
+pypdf==6.1.3

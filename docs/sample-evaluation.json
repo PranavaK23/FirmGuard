@@ -1,0 +1,729 @@
+{
+  "v1": {
+    "filename": "firmware_v1.zip",
+    "size_bytes": 926,
+    "scanner_version": "firmguard-1.0-rules-1",
+    "integrity": {
+      "algorithm": "SHA-256",
+      "sha256": "ce9001b4c291a12014b28004ac36c7a7f8babf936e22ca21c89fff0ed1e9961c",
+      "expected_sha256": null,
+      "status": "not_compared"
+    },
+    "files_scanned": 6,
+    "text_files": 5,
+    "binary_files": 1,
+    "manifest": [
+      {
+        "path": "etc/device.conf",
+        "size_bytes": 130,
+        "sha256": "b18c247c4dee5f1244c90a18a93fe79974a3a35d6e20575c098eefb106348ce5",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "etc/ssh/sshd_config",
+        "size_bytes": 47,
+        "sha256": "c6f304501dd051cc53700f7047111f474231dbb6070a1c049f629644753a7230",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "usr/lib/version.txt",
+        "size_bytes": 44,
+        "sha256": "469fd97e24c7691396f1cb5b9c5eb9f30537dd6a114e325eb83824f493aabefe",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "usr/bin/sample.elf",
+        "size_bytes": 120,
+        "sha256": "fe82db5160fe8e5b6d41b1a56947fd6e12fd5de79672dcc7113fd37a4402db86",
+        "mode": "0o644",
+        "kind": "elf",
+        "coverage": [
+          "ASCII strings (first 8 MiB)",
+          "ELF metadata"
+        ]
+      },
+      {
+        "path": "etc/passwd",
+        "size_bytes": 29,
+        "sha256": "45c3e45bafed64c96cb286143358416ffa67c03b656eba99057ec9aa0299907f",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "etc/old.conf",
+        "size_bytes": 16,
+        "sha256": "a438ddcb2158f3ffb1bb89d781014ff99c48da885cf966b0c3f002aa40366aaa",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      }
+    ],
+    "containers": [
+      {
+        "path": "firmware_v1.zip",
+        "format": "zip",
+        "sha256": "ce9001b4c291a12014b28004ac36c7a7f8babf936e22ca21c89fff0ed1e9961c"
+      }
+    ],
+    "findings": [
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded Wi-Fi password",
+        "filename": "etc/device.conf",
+        "line": 2,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "wifi_password",
+        "masked_value": "********",
+        "category": "Credentials"
+      },
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded password",
+        "filename": "etc/device.conf",
+        "line": 3,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "password",
+        "masked_value": "********",
+        "category": "Credentials"
+      },
+      {
+        "rule_id": "CONF-TELNET",
+        "type": "Telnet enabled",
+        "filename": "etc/device.conf",
+        "line": 4,
+        "severity": "High",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Disable Telnet and use SSH.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-TLS",
+        "type": "Certificate verification disabled",
+        "filename": "etc/device.conf",
+        "line": 5,
+        "severity": "High",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Enable certificate and hostname verification.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-DEBUG",
+        "type": "Debug mode enabled",
+        "filename": "etc/device.conf",
+        "line": 6,
+        "severity": "Medium",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Disable debug mode in released firmware.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-SSH-ROOT",
+        "type": "SSH root login enabled",
+        "filename": "etc/ssh/sshd_config",
+        "line": 1,
+        "severity": "High",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Disable direct root login.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-SSH-PASSWORD",
+        "type": "SSH password authentication enabled",
+        "filename": "etc/ssh/sshd_config",
+        "line": 2,
+        "severity": "Medium",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Prefer provisioned SSH keys where feasible.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "ELF-NX",
+        "type": "Executable stack requested",
+        "filename": "usr/bin/sample.elf",
+        "line": null,
+        "severity": "High",
+        "explanation": "PT_GNU_STACK has the execute flag.",
+        "remediation": "Link with a non-executable stack where supported.",
+        "category": "ELF"
+      },
+      {
+        "rule_id": "ELF-PIE",
+        "type": "Executable without PIE",
+        "filename": "usr/bin/sample.elf",
+        "line": null,
+        "severity": "Medium",
+        "explanation": "The executable uses ET_EXEC rather than PIE.",
+        "remediation": "Build supported executables with -fPIE and -pie.",
+        "category": "ELF"
+      },
+      {
+        "rule_id": "ELF-RELRO",
+        "type": "Full RELRO not detected",
+        "filename": "usr/bin/sample.elf",
+        "line": null,
+        "severity": "Medium",
+        "explanation": "GNU_RELRO and immediate binding were not both present.",
+        "remediation": "Link supported programs with -Wl,-z,relro,-z,now.",
+        "category": "ELF"
+      },
+      {
+        "rule_id": "CONF-ACCOUNT-EMPTY",
+        "type": "Account with empty password field",
+        "filename": "etc/passwd",
+        "line": 1,
+        "severity": "High",
+        "explanation": "An account record has an empty password field. Account names are withheld.",
+        "remediation": "Lock unused accounts and require authentication.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "SW-CVE-2014-0160",
+        "type": "Potential CVE-2014-0160 version match",
+        "filename": "usr/lib/version.txt",
+        "line": null,
+        "severity": "High",
+        "explanation": "Detected OpenSSL 1.0.1f; the upstream range is 1.0.1 to before 1.0.1g. Vendor backports and build options require verification.",
+        "remediation": "Check the vendor advisory and update to a supported, patched build.",
+        "category": "Software",
+        "cve": "CVE-2014-0160",
+        "product": "OpenSSL",
+        "detected_version": "1.0.1f",
+        "reference": "https://www.cve.org/CVERecord?id=CVE-2014-0160"
+      },
+      {
+        "rule_id": "SW-CVE-2017-14491",
+        "type": "Potential CVE-2017-14491 version match",
+        "filename": "usr/lib/version.txt",
+        "line": null,
+        "severity": "High",
+        "explanation": "Detected dnsmasq 2.77; the upstream range is 2.0 to before 2.78. Vendor backports and build options require verification.",
+        "remediation": "Check the vendor advisory and update to a supported, patched build.",
+        "category": "Software",
+        "cve": "CVE-2017-14491",
+        "product": "dnsmasq",
+        "detected_version": "2.77",
+        "reference": "https://www.cve.org/CVERecord?id=CVE-2017-14491"
+      }
+    ],
+    "finding_count": 13,
+    "severity_counts": {
+      "High": 9,
+      "Medium": 4
+    },
+    "risk": "Review needed",
+    "components": [
+      {
+        "product": "OpenSSL",
+        "version": "1.0.1f",
+        "filename": "usr/lib/version.txt",
+        "source": "banner",
+        "location": 0,
+        "confidence": "version string",
+        "check_status": "potential_match",
+        "advisory_ids": [
+          "CVE-2014-0160"
+        ]
+      },
+      {
+        "product": "BusyBox",
+        "version": "1.30.1",
+        "filename": "usr/lib/version.txt",
+        "source": "banner",
+        "location": 15,
+        "confidence": "version string",
+        "check_status": "not_covered",
+        "advisory_ids": []
+      },
+      {
+        "product": "dnsmasq",
+        "version": "2.77",
+        "filename": "usr/lib/version.txt",
+        "source": "banner",
+        "location": 31,
+        "confidence": "version string",
+        "check_status": "potential_match",
+        "advisory_ids": [
+          "CVE-2017-14491"
+        ]
+      }
+    ],
+    "elf": [
+      {
+        "filename": "usr/bin/sample.elf",
+        "class": 64,
+        "endian": "little",
+        "machine": "EM_X86_64",
+        "type": "ET_EXEC",
+        "nx": "disabled",
+        "pie": "disabled",
+        "relro": "none",
+        "stack_canary": "unknown",
+        "fortify": "unknown",
+        "status": "analysed"
+      }
+    ],
+    "extraction": {
+      "method": "native",
+      "input_format": "zip",
+      "scope": "filesystem",
+      "binwalk": null
+    },
+    "coverage": "supported checks completed",
+    "warnings": [],
+    "advisory_revision": "2026-11-02-curated-1",
+    "notice": "Static pattern and metadata analysis only. No findings does not prove security. Hash equality does not establish authenticity. Version matches require vendor verification."
+  },
+  "v2": {
+    "filename": "firmware_v2.tar.gz",
+    "size_bytes": 519,
+    "scanner_version": "firmguard-1.0-rules-1",
+    "integrity": {
+      "algorithm": "SHA-256",
+      "sha256": "7405f10e6d568ba14b35a2950a048b0d81bb9ce335a14116f73d344c26462837",
+      "expected_sha256": null,
+      "status": "not_compared"
+    },
+    "files_scanned": 6,
+    "text_files": 5,
+    "binary_files": 1,
+    "manifest": [
+      {
+        "path": "etc/device.conf",
+        "size_bytes": 130,
+        "sha256": "b112d94e6de9a6895a7ba43d618a1351ce287ebd5e1b7fda6cec03d7dc0a98fe",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "etc/ssh/sshd_config",
+        "size_bytes": 45,
+        "sha256": "d65ec1c8aa7f5404d2a4bc57cdbe42fe7c580f8dd4fe38979a1719fa28dde3c0",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "usr/lib/version.txt",
+        "size_bytes": 44,
+        "sha256": "b0c8676a4503b743bff17338f52b173cd5c39fce0dde26bee875cb6a55da1335",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "usr/bin/sample.elf",
+        "size_bytes": 340,
+        "sha256": "abd4991867fe857d6f074a706be1fbc01b408e63a460815615b401604d6741dc",
+        "mode": "0o644",
+        "kind": "elf",
+        "coverage": [
+          "ASCII strings (first 8 MiB)",
+          "ELF metadata"
+        ]
+      },
+      {
+        "path": "etc/passwd",
+        "size_bytes": 30,
+        "sha256": "79492b90d473e2387338ef1518dfbceb9e3392ae5740235a6696621e42218efa",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      },
+      {
+        "path": "etc/new.conf",
+        "size_bytes": 16,
+        "sha256": "a438ddcb2158f3ffb1bb89d781014ff99c48da885cf966b0c3f002aa40366aaa",
+        "mode": "0o644",
+        "kind": "file",
+        "coverage": [
+          "text rules"
+        ]
+      }
+    ],
+    "containers": [
+      {
+        "path": "firmware_v2.tar.gz",
+        "format": "gzip",
+        "sha256": "7405f10e6d568ba14b35a2950a048b0d81bb9ce335a14116f73d344c26462837"
+      },
+      {
+        "path": "firmware_v2.tar",
+        "format": "tar",
+        "sha256": "954eacb1e64d9ec01c2bbc937b556c7cc586f75deea8df3e20bd32caca513615"
+      }
+    ],
+    "findings": [
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded Wi-Fi password",
+        "filename": "etc/device.conf",
+        "line": 2,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "wifi_password",
+        "masked_value": "********",
+        "category": "Credentials"
+      },
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded API key / token",
+        "filename": "etc/device.conf",
+        "line": 3,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "api_key",
+        "masked_value": "********",
+        "category": "Credentials"
+      }
+    ],
+    "finding_count": 2,
+    "severity_counts": {
+      "High": 2
+    },
+    "risk": "Review needed",
+    "components": [
+      {
+        "product": "OpenSSL",
+        "version": "1.0.1g",
+        "filename": "usr/lib/version.txt",
+        "source": "banner",
+        "location": 0,
+        "confidence": "version string",
+        "check_status": "no_curated_match",
+        "advisory_ids": []
+      },
+      {
+        "product": "BusyBox",
+        "version": "1.36.1",
+        "filename": "usr/lib/version.txt",
+        "source": "banner",
+        "location": 15,
+        "confidence": "version string",
+        "check_status": "not_covered",
+        "advisory_ids": []
+      },
+      {
+        "product": "dnsmasq",
+        "version": "2.78",
+        "filename": "usr/lib/version.txt",
+        "source": "banner",
+        "location": 31,
+        "confidence": "version string",
+        "check_status": "no_curated_match",
+        "advisory_ids": []
+      }
+    ],
+    "elf": [
+      {
+        "filename": "usr/bin/sample.elf",
+        "class": 64,
+        "endian": "little",
+        "machine": "EM_X86_64",
+        "type": "ET_DYN",
+        "nx": "enabled",
+        "pie": "enabled",
+        "relro": "full",
+        "stack_canary": "unknown",
+        "fortify": "unknown",
+        "status": "analysed"
+      }
+    ],
+    "extraction": {
+      "method": "native",
+      "input_format": "gzip",
+      "scope": "filesystem",
+      "binwalk": null
+    },
+    "coverage": "supported checks completed",
+    "warnings": [],
+    "advisory_revision": "2026-11-02-curated-1",
+    "notice": "Static pattern and metadata analysis only. No findings does not prove security. Hash equality does not establish authenticity. Version matches require vendor verification."
+  },
+  "comparison": {
+    "baseline_id": 1,
+    "candidate_id": 2,
+    "device": "Sample router",
+    "baseline_version": "1.0",
+    "candidate_version": "2.0",
+    "counts": {
+      "new": 1,
+      "still_present": 1,
+      "no_longer_detected": 12
+    },
+    "new": [
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded API key / token",
+        "filename": "etc/device.conf",
+        "line": 3,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "api_key",
+        "masked_value": "********",
+        "category": "Credentials"
+      }
+    ],
+    "still_present": [
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded Wi-Fi password",
+        "filename": "etc/device.conf",
+        "line": 2,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "wifi_password",
+        "masked_value": "********",
+        "category": "Credentials"
+      }
+    ],
+    "no_longer_detected": [
+      {
+        "rule_id": "CONF-DEBUG",
+        "type": "Debug mode enabled",
+        "filename": "etc/device.conf",
+        "line": 6,
+        "severity": "Medium",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Disable debug mode in released firmware.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-TELNET",
+        "type": "Telnet enabled",
+        "filename": "etc/device.conf",
+        "line": 4,
+        "severity": "High",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Disable Telnet and use SSH.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-TLS",
+        "type": "Certificate verification disabled",
+        "filename": "etc/device.conf",
+        "line": 5,
+        "severity": "High",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Enable certificate and hostname verification.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CRED-001",
+        "type": "Hardcoded password",
+        "filename": "etc/device.conf",
+        "line": 3,
+        "severity": "High",
+        "explanation": "A literal credential assignment was detected. Its value is hidden.",
+        "remediation": "Remove embedded secrets, rotate exposed credentials and use protected provisioning.",
+        "key": "password",
+        "masked_value": "********",
+        "category": "Credentials"
+      },
+      {
+        "rule_id": "CONF-ACCOUNT-EMPTY",
+        "type": "Account with empty password field",
+        "filename": "etc/passwd",
+        "line": 1,
+        "severity": "High",
+        "explanation": "An account record has an empty password field. Account names are withheld.",
+        "remediation": "Lock unused accounts and require authentication.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-SSH-PASSWORD",
+        "type": "SSH password authentication enabled",
+        "filename": "etc/ssh/sshd_config",
+        "line": 2,
+        "severity": "Medium",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Prefer provisioned SSH keys where feasible.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "CONF-SSH-ROOT",
+        "type": "SSH root login enabled",
+        "filename": "etc/ssh/sshd_config",
+        "line": 1,
+        "severity": "High",
+        "explanation": "An explicit setting matches this rule. Includes, defaults and runtime overrides are not resolved.",
+        "remediation": "Disable direct root login.",
+        "category": "Configuration"
+      },
+      {
+        "rule_id": "ELF-NX",
+        "type": "Executable stack requested",
+        "filename": "usr/bin/sample.elf",
+        "line": null,
+        "severity": "High",
+        "explanation": "PT_GNU_STACK has the execute flag.",
+        "remediation": "Link with a non-executable stack where supported.",
+        "category": "ELF"
+      },
+      {
+        "rule_id": "ELF-PIE",
+        "type": "Executable without PIE",
+        "filename": "usr/bin/sample.elf",
+        "line": null,
+        "severity": "Medium",
+        "explanation": "The executable uses ET_EXEC rather than PIE.",
+        "remediation": "Build supported executables with -fPIE and -pie.",
+        "category": "ELF"
+      },
+      {
+        "rule_id": "ELF-RELRO",
+        "type": "Full RELRO not detected",
+        "filename": "usr/bin/sample.elf",
+        "line": null,
+        "severity": "Medium",
+        "explanation": "GNU_RELRO and immediate binding were not both present.",
+        "remediation": "Link supported programs with -Wl,-z,relro,-z,now.",
+        "category": "ELF"
+      },
+      {
+        "rule_id": "SW-CVE-2014-0160",
+        "type": "Potential CVE-2014-0160 version match",
+        "filename": "usr/lib/version.txt",
+        "line": null,
+        "severity": "High",
+        "explanation": "Detected OpenSSL 1.0.1f; the upstream range is 1.0.1 to before 1.0.1g. Vendor backports and build options require verification.",
+        "remediation": "Check the vendor advisory and update to a supported, patched build.",
+        "category": "Software",
+        "cve": "CVE-2014-0160",
+        "product": "OpenSSL",
+        "detected_version": "1.0.1f",
+        "reference": "https://www.cve.org/CVERecord?id=CVE-2014-0160"
+      },
+      {
+        "rule_id": "SW-CVE-2017-14491",
+        "type": "Potential CVE-2017-14491 version match",
+        "filename": "usr/lib/version.txt",
+        "line": null,
+        "severity": "High",
+        "explanation": "Detected dnsmasq 2.77; the upstream range is 2.0 to before 2.78. Vendor backports and build options require verification.",
+        "remediation": "Check the vendor advisory and update to a supported, patched build.",
+        "category": "Software",
+        "cve": "CVE-2017-14491",
+        "product": "dnsmasq",
+        "detected_version": "2.77",
+        "reference": "https://www.cve.org/CVERecord?id=CVE-2017-14491"
+      }
+    ],
+    "files": {
+      "added": [
+        "etc/new.conf"
+      ],
+      "removed": [
+        "etc/old.conf"
+      ],
+      "changed": [
+        {
+          "path": "etc/device.conf",
+          "baseline_sha256": "b18c247c4dee5f1244c90a18a93fe79974a3a35d6e20575c098eefb106348ce5",
+          "candidate_sha256": "b112d94e6de9a6895a7ba43d618a1351ce287ebd5e1b7fda6cec03d7dc0a98fe",
+          "baseline_mode": "0o644",
+          "candidate_mode": "0o644"
+        },
+        {
+          "path": "etc/passwd",
+          "baseline_sha256": "45c3e45bafed64c96cb286143358416ffa67c03b656eba99057ec9aa0299907f",
+          "candidate_sha256": "79492b90d473e2387338ef1518dfbceb9e3392ae5740235a6696621e42218efa",
+          "baseline_mode": "0o644",
+          "candidate_mode": "0o644"
+        },
+        {
+          "path": "etc/ssh/sshd_config",
+          "baseline_sha256": "c6f304501dd051cc53700f7047111f474231dbb6070a1c049f629644753a7230",
+          "candidate_sha256": "d65ec1c8aa7f5404d2a4bc57cdbe42fe7c580f8dd4fe38979a1719fa28dde3c0",
+          "baseline_mode": "0o644",
+          "candidate_mode": "0o644"
+        },
+        {
+          "path": "usr/bin/sample.elf",
+          "baseline_sha256": "fe82db5160fe8e5b6d41b1a56947fd6e12fd5de79672dcc7113fd37a4402db86",
+          "candidate_sha256": "abd4991867fe857d6f074a706be1fbc01b408e63a460815615b401604d6741dc",
+          "baseline_mode": "0o644",
+          "candidate_mode": "0o644"
+        },
+        {
+          "path": "usr/lib/version.txt",
+          "baseline_sha256": "469fd97e24c7691396f1cb5b9c5eb9f30537dd6a114e325eb83824f493aabefe",
+          "candidate_sha256": "b0c8676a4503b743bff17338f52b173cd5c39fce0dde26bee875cb6a55da1335",
+          "baseline_mode": "0o644",
+          "candidate_mode": "0o644"
+        }
+      ],
+      "unchanged": []
+    },
+    "file_counts": {
+      "added": 1,
+      "removed": 1,
+      "changed": 5,
+      "unchanged": 0
+    },
+    "software_changes": [
+      {
+        "product": "BusyBox",
+        "baseline_versions": [
+          "1.30.1"
+        ],
+        "candidate_versions": [
+          "1.36.1"
+        ]
+      },
+      {
+        "product": "OpenSSL",
+        "baseline_versions": [
+          "1.0.1f"
+        ],
+        "candidate_versions": [
+          "1.0.1g"
+        ]
+      },
+      {
+        "product": "dnsmasq",
+        "baseline_versions": [
+          "2.77"
+        ],
+        "candidate_versions": [
+          "2.78"
+        ]
+      }
+    ],
+    "identical_upload": false,
+    "notice": "No longer detected means absent from this scan, not a verified fix. Paths, rule IDs and occurrence counts identify findings; secret values and line shifts are ignored. File hashes detect byte changes. Compare equivalent extraction coverage; partial scans may hide differences."
+  }
+}

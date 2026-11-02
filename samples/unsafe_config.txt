@@ -1,0 +1,5 @@
+# FirmGuard demonstration: deliberately fake credentials; never use these
+device_name=demo_router
+password=admin123
+wifi_password=test123
+api_key=demo123

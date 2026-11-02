@@ -1,0 +1,9 @@
+*.py text eol=lf
+*.jsx text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=crlf
+# Keep the demonstration fingerprints tied to the exact sample bytes.
+samples/** -text

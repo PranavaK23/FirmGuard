@@ -1,0 +1,7 @@
+FirmGuard Run Commands
+
+Option 1: .\run.bat
+Option 2: powershell -ExecutionPolicy Bypass -File .\start.ps1
+Option 3: .\.venv\Scripts\python.exe -m uvicorn main:app --app-dir backend --host 127.0.0.1 --port 8000 --workers 1
+
+URL: http://127.0.0.1:8000

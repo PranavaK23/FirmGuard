@@ -1,0 +1,7 @@
+# FirmGuard demonstration: configuration without literal credentials
+device_name=lab_Gateway
+device_mode=development
+logging_enabled=true
+wifi_ssid=student_lab
+credential_source=environment
+api_endpoint=https://example.invalid/api

@@ -1,0 +1,22 @@
+{
+  "revision": "2026-11-02-curated-1",
+  "notice": "A small offline teaching rule set, not a complete or live CVE database. Vendor-patched version strings may differ from upstream releases.",
+  "advisories": [
+    {
+      "id": "CVE-2014-0160",
+      "product": "OpenSSL",
+      "introduced": "1.0.1",
+      "fixed": "1.0.1g",
+      "severity": "High",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2014-0160"
+    },
+    {
+      "id": "CVE-2017-14491",
+      "product": "dnsmasq",
+      "introduced": "2.0",
+      "fixed": "2.78",
+      "severity": "High",
+      "reference": "https://www.cve.org/CVERecord?id=CVE-2017-14491"
+    }
+  ]
+}
